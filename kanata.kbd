@@ -1,0 +1,69 @@
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt  rctl
+)
+
+(deflayer default
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @emacs a  s    d    f    g    h    j    k    l    @vim  '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet @lalt-ime           @fn2            @ralt-ime  rctl
+)
+
+(deflayer fn2
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    [    ]    r    S-'    =    7    8    9    p    [    ]    \
+  lctl S-,  S-9  S-0  S-.  S-\  -    4    5    6    -  '    ret
+  lsft -    S-[  S-]  S-=  '    S-8  1    2    3    /    .
+  lctl lmet lalt           spc            0    .
+)
+
+(deflayer vim
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    pgdn pgup o    p    [    ]    \
+  lctl a    s    d    f    g    left down up   right ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           @back          @fwd rctl
+)
+
+(deflayer emacs
+  grv  C-1  C-2  C-3  C-4  C-5  C-6  C-7  C-8  C-9  C-0  C--  C-=  C-bspc
+  tab  C-q  C-w  end  C-r  C-t  C-y  C-u  C-i  C-o  up   C-[  C-]  C-\
+  lctl home C-s  del  right C-g bspc ret  C-k  C-l  (multi lctl @vim)  C-'  C-ret
+  lsft C-z  C-x  C-c  C-v  left down ret  C-,  C-.  C-/    C-rsft
+  lctl C-lmet C-lalt           C-spc            C-ralt  rctl
+)
+
+
+(defalias 
+  back (multi lalt left)  ;; Alt + ←
+  fwd  (multi lalt rght)  ;; Alt + →
+  ime-off (arbitrary-code 240) ;; 0xF0 (Lang2 is 0xF1 but 0xf0 works)
+  ime-on (arbitrary-code 242) ;; 0xF2 (Lang1)
+
+  layer-fn2 (layer-while-held fn2)
+  layer-vim (layer-while-held vim)
+  layer-emacs (layer-while-held emacs)
+
+  lalt-ime (tap-hold 200 200 @ime-off lalt)
+  ralt-ime (tap-hold 200 200 @ime-on ralt)
+  fn2 (tap-hold 200 200 spc @layer-fn2)
+  vim (tap-hold 200 200 ; @layer-vim)
+  emacs (tap-hold 200 200 lctl @layer-emacs)
+)
+
+
+(deflayermap (base-layer)
+  caps lctl
+  lalt @lalt-ime
+  ralt @ralt-ime
+)
+
+(defcfg
+  process-unmapped-keys yes
+)

@@ -1,0 +1,21 @@
+= Kanata を設定する
+
+== ダウンロードとインストール
+
+ダウンロードは https://github.com/jtroo/kanata のリリースから。
+中身をすべてこのディレクトリに展開する。
+
+`Lang1` と `Lang2` を利用するので、 `interception-driver` というのを使う必要がある。
+そのために、  https://github.com/oblitum/Interception をダウンロードする。かなり古いけど。
+
+`interception-driver` のインストール後に再起動が必要。
+ただ、dllをコピーしてこのディレクトリにコピーだけでもよさそう。
+むしろそうしないと、kanataの実行時にdllが見えなかった。
+
+
+= 実行
+
+```pwsh
+.\kanata_windows_gui_wintercept_x64.exe
+```
+
