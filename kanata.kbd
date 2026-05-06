@@ -34,7 +34,7 @@
 (deflayer emacs
   grv  C-1  C-2  C-3  C-4  C-5  C-6  C-7  C-8  C-9  C-0  C--  C-=  C-bspc
   tab  C-q  C-w  end  C-r  C-t  C-y  C-u  C-i  C-o  up   C-[  C-]  C-\
-  lctl home C-s  del  right C-g bspc ret  C-k  C-l  (multi lctl @vim)  C-'  C-ret
+  @nctrl home C-s del right C-g bspc ret  C-k  C-l  (multi lctl @vim)  C-'  C-ret
   lsft C-z  C-x  C-c  C-v  left down ret  C-,  C-.  C-/    C-rsft
   lctl C-lmet C-lalt           C-spc            C-ralt  rctl
 )
@@ -55,6 +55,8 @@
   fn2 (tap-hold 200 200 spc @layer-fn2)
   vim (tap-hold 200 200 ; @layer-vim)
   emacs (tap-hold 200 200 lctl @layer-emacs)
+
+  nctrl (multi lctl (layer-while-held default))
 )
 
 
