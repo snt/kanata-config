@@ -43,7 +43,7 @@
 (defalias 
   back (multi lalt left)  ;; Alt + ←
   fwd  (multi lalt rght)  ;; Alt + →
-  ime-off (arbitrary-code 240) ;; 0xF0 (Lang2 is 0xF1 but 0xf0 works)
+  ime-off (arbitrary-code 29) ;; Lang2 is 0xF1 but it makes IME katakana mode. So we use 29(muhenkan) instead.
   ime-on (arbitrary-code 242) ;; 0xF2 (Lang1)
 
   layer-fn2 (layer-while-held fn2)
