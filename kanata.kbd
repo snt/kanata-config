@@ -10,7 +10,7 @@
 (deflayer default
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @emacs a  s    d    f    g    h    j    k    l    @vim  '    ret
+  @xctl a  s    d    f    g    h    j    k    l    @vim  '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet @lalt-ime           @fn2            @ralt-ime  rctl
 )
@@ -34,11 +34,10 @@
 (deflayer emacs
   grv  C-1  C-2  C-3  C-4  C-5  C-6  C-7  C-8  C-9  C-0  C--  C-=  C-bspc
   tab  C-q  C-w  end  C-r  C-t  C-y  C-u  C-i  C-o  up   C-[  C-]  C-\
-  @nctrl home C-s del right C-g bspc ret  C-k  C-l  (multi lctl @vim)  C-'  C-ret
+  caps home C-s del right C-g bspc ret  C-k  C-l  (multi lctl @vim)  C-'  C-ret
   lsft C-z  C-x  C-c  C-v  left down ret  C-,  C-.  C-/    C-rsft
   lctl C-lmet C-lalt           C-spc            C-ralt  rctl
 )
-
 
 (defalias 
   back (multi lalt left)  ;; Alt + ←
@@ -56,7 +55,7 @@
   vim (tap-hold 200 200 ; @layer-vim)
   emacs (tap-hold 200 200 lctl @layer-emacs)
 
-  nctrl (multi lctl (layer-while-held default))
+  xctl (tap-dance 200 (@emacs lctl))
 )
 
 
